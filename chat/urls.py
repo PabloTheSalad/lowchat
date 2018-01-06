@@ -5,5 +5,5 @@ from . import views
 app_name = 'chat'
 
 urlpatterns = [
-    path('', views.main),
+    path('', views.main, name='main'),
 ]
