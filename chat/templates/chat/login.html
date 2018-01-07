@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Lowchat</title>
+	<link rel="stylesheet" href="{% static 'chat/css/login.css' %}">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body id="doc">
+	<div class="authorization-frame">
+		<form class="avtorization">
+			{% csrf_token %}
+			<p class="login">Логин: <br>
+				<input autofocus class="login__input" maxlength="25" name="login">
+			</p>
+			<p class="password">Пароль: <br>
+	    		<input class="password__input" type="password" maxlength="25" name="password">
+	    	</p>
+		<input type="submit" class="start-button" value="Start"> 
+		</form>
+		<p class="Registration">Вы не местный? <br>
+			<a href="#" class="Registration__link">Зарегистрироваться</a>
+		</p>
+	</div>
+</body>
+</html>
