@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 from django.urls import reverse
 
-from .models import Chat, Message
+from .models import Message
 
 
 def main(request):
@@ -49,20 +49,10 @@ def lout(request):
     return HttpResponseRedirect('/login/')
 
 
-@login_required(login_url='/login/')
-def chats(request):
-    user = request.user
-    return render(request, 'chat/chats.html', {'user': user})
-
-
 @login_required(login_url='/login')
-def chat(request, chat_id):
-    try:
-        user = request.user
-        chat = user.chat_set.get(pk=chat_id)
-        return render(request, 'chat/chat.html', {'chat': chat, 'user': user})
-    except (KeyError, Chat.DoesNotExist):
-        return render(request, 'chat/error.html', {'error': 'This chat does not exist'})
+def chat(request):
+    user = request.user
+    return render(request, 'chat/chat.html', {'user': user})
 
 
 

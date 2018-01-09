@@ -13,7 +13,7 @@
 </head>
 <body id="doc">
 	<div class="authorization-frame">
-		<form class="avtorization">
+        <form class="avtorization" action="{% url 'chat:login' %}" method="post">
 			{% csrf_token %}
 			<p class="login">Логин: <br>
 				<input autofocus class="login__input" maxlength="25" name="login">

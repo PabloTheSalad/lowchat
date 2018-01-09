@@ -10,6 +10,5 @@ urlpatterns = [
     path('user/<str:username>/', views.userpage, name='userpage'),
     path('login/', views.lin, name='login'),
     path('logout/', views.lout, name='logout'),
-    path('chat/', views.chats, name='chats'),
-    path('chat/<int:chat_id>/', views.chat, name='chat'),
+    path('chat/', views.chat, name='chat'),
 ]
