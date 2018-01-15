@@ -12,10 +12,10 @@ from .models import Message
 
 def main(request):
     # return render(request, 'chat/index.html')
-    return HttpResponseRedirect('/login/')
+    return HttpResponseRedirect('/login')
 
 
-@login_required(login_url='/login/')
+@login_required(login_url='/login')
 def user(request):
     return HttpResponseRedirect('/user/' + request.user.username + '/')
 
@@ -31,7 +31,7 @@ def userpage(request, username):
 
 
 def lin(request):
-    try:
+    if request.method == 'POST':
         username = request.POST['login']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
@@ -40,19 +40,29 @@ def lin(request):
             return HttpResponseRedirect('/user/' + user.username + '/')
         else:
             return render(request, 'chat/login.html', {'error': True})
-    except:
+    else:
         return render(request, 'chat/login.html')
 
 
 def lout(request):
     logout(request)
-    return HttpResponseRedirect('/login/')
+    return HttpResponseRedirect('/login')
 
 
 @login_required(login_url='/login')
 def chat(request):
     user = request.user
-    return render(request, 'chat/chat.html', {'user': user})
+    messages = Message.objects.all()[:100]
+    return render(request, 'chat/chat.html', {'user': user, 'messages': messages})
+
+
+@login_required(login_url='/login')
+def sendMessage(request):
+    if request.method == 'POST':
+        text = request.POST['text']
+        if text:
+            Message(user=request.user, text=text).save()
+    return HttpResponseRedirect('/chat')
 
 
 

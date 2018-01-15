@@ -26,4 +26,3 @@ class Message(models.Model):
 
     class Meta:
         ordering = ('pub_date',)
-
