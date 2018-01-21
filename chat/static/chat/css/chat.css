@@ -29,6 +29,7 @@ body {
 .chat__main-frame {
   height: 96%;
   background: #d7eec7;
+  overflow-y: scroll;
 }
 .chat__i {
   display: -webkit-box;
