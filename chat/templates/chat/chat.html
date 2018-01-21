@@ -10,19 +10,25 @@
     <link rel="stylesheet" href="{% static 'chat/css/chat.css' %}">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<style>
+	.chat__user-color {
+	color:{{ message.user.features.namecolor }}"
+	}
+	</style>
 </head>
 <body id="doc">
 	<div class="container-wrapper">
 		<div class="container">
 			<span class="user-hi">Привет, {{ user.username }}!</span>
+			<a href="https://nameless-journey-66002.herokuapp.com/logout" class="user-goodbye">
+				<button class="user-goodbye__button">Go out</button>
+			</a>
 			<div class="chat">
 				<div class="chat__main-frame">
 					{% for message in messages %}
 	   					<div class="chat__user-text">
-	   						<style style="color:{{ message.user.features.namecolor }}">
-	   							<p class="chat__user-name">{{ message.user.username }}</p>:
-	   						</style>
-	   						<span class="chat__user-message">{{ message.text }}</span>
+	   						<p class="chat__user-name chat__user-color">{{ message.user.username }}</p>:
+							<span class="chat__user-message">{{ message.text }}</span>
 	   					</div>
 					{% endfor %}
 				</div>
