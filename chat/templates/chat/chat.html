@@ -18,8 +18,11 @@
 			<div class="chat">
 				<div class="chat__main-frame">
 					{% for message in messages %}
-	   					<div>
-	   						{{ message.user.username }}: {{ message.text }}
+	   					<div class="chat__user-text">
+	   						<style style="color:{{ message.user.features.namecolor }}">
+	   							<p class="chat__user-name">{{ message.user.username }}</p>:
+	   						</style>
+	   						<span class="chat__user-message">{{ message.text }}</span>
 	   					</div>
 					{% endfor %}
 				</div>
