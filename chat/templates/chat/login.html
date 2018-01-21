@@ -16,7 +16,7 @@
         <form class="avtorization" action="{% url 'chat:login' %}" method="post">
 			{% csrf_token %}
 			<p class="login">Логин: <br>
-				<input autofocus class="login__input" maxlength="25" name="login">
+				<input autofocus class="login__input" maxlength="25" type="text" name="username">
 			</p>
 			<p class="password">Пароль: <br>
 	    		<input class="password__input" type="password" maxlength="25" name="password">

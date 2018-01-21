@@ -26,3 +26,11 @@ class Message(models.Model):
 
     class Meta:
         ordering = ('pub_date',)
+
+
+class Features(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    age = models.IntegerField()
+    gender = models.CharField(max_length=1)
+    information = models.CharField(max_length=1024)
+    namecolor = models.CharField(max_length=32, default='black')
