@@ -20,7 +20,7 @@
 					{% for message in messages %}
 	   					<div>
 	   						{{ message.user.username }}: {{ message.text }}
-	   					<div>
+	   					</div>
 					{% endfor %}
 				</div>
                 <form class="chat__i" action="{% url 'chat:send' %}" method="post">
