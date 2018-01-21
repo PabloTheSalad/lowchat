@@ -87,3 +87,8 @@ def registrate(request):
     else:
         form = RegistrateForm()
         return render(request, 'chat/registrate.html', {'form': form})
+
+
+@login_required(login_url='/login')
+def otherwise(request, url='str'):
+    return HttpResponseRedirect('/chat')

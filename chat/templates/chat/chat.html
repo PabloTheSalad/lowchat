@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
 	content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Lowchat</title>
-	<link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="{% static 'chat/css/chat.css' %}">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
@@ -20,12 +21,12 @@
 	   					<div>
 	   						{{ message.user.username }}: {{ message.text }}
 	   					<div>
-					{% enfor %}
+					{% endfor %}
 				</div>
-				<form class="chat__i action="/chat/send" method="post">
+                <form class="chat__i" action="{% url 'chat:send' %}" method="post">
 					{% csrf_token %}
 					<input type="text" name="text" class="chat__input" maxlength="1024" required id="id_text">
-					<button class="chat__button" type="submit" value="send">go</button>
+                    <button class="chat__button" type="submit" value="send">go</button>
 				</form> 
 			</div>
 	</div>
