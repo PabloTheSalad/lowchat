@@ -1,0 +1,8 @@
+{% if error %}
+    <p style="color:red">{{ error }}</p>
+{% endif %}
+<form action="{% url 'chat:registrate' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="registrate">
+</form>
