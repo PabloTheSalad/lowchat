@@ -22,9 +22,7 @@
 				<div class="chat__main-frame">
 					{% for message in messages %}
 	   					<div class="chat__user-text">
-	   						<style style="color:{{ message.user.features.namecolor }}">
-	   							<p class="chat__user-name">{{ message.user.username }}:<span class="chat__user-message">{{ message.text }}</span></p>
-	   						</style>
+	   						<p class="chat__user-name" style="color:{{ message.user.features.namecolor }}">{{ message.user.username }}:<span class="chat__user-message">{{ message.text }}</span></p>
 	   					</div>
 					{% endfor %}
 				</div>
