@@ -8,12 +8,12 @@ body {
 }
 .container-wrapper {
   background: #EEF9E6;
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 .container {
   margin: auto;
   width: 80%;
-  padding-bottom: 3rem;
+  padding-bottom: 2rem;
 }
 .user-hi {
   color: #375F1B;
