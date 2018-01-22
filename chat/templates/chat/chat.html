@@ -10,11 +10,6 @@
     <link rel="stylesheet" href="{% static 'chat/css/chat.css' %}">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-	<style>
-	.chat__user-color {
-	color:{{ message.user.features.namecolor }}"
-	}
-	</style>
 </head>
 <body id="doc">
 	<div class="container-wrapper">
@@ -27,7 +22,9 @@
 				<div class="chat__main-frame">
 					{% for message in messages %}
 	   					<div class="chat__user-text">
-	   						<p class="chat__user-name chat__user-color">{{ message.user.username }}:<span class="chat__user-message">{{ message.text }}</span></p>
+	   						<style style="color:{{ message.user.features.namecolor }}">
+	   							<p class="chat__user-name">{{ message.user.username }}:<span class="chat__user-message">{{ message.text }}</span></p>
+	   						</style>
 	   					</div>
 					{% endfor %}
 				</div>
