@@ -20,15 +20,14 @@
 	<div class="container-wrapper">
 		<div class="container">
 			<span class="user-hi">Привет, {{ user.username }}!</span>
-			<a href="https://nameless-journey-66002.herokuapp.com/logout" class="user-goodbye">
+			<a href="/logout" class="user-goodbye">
 				<button class="user-goodbye__button">Go out</button>
 			</a>
 			<div class="chat">
 				<div class="chat__main-frame">
 					{% for message in messages %}
 	   					<div class="chat__user-text">
-	   						<p class="chat__user-name chat__user-color">{{ message.user.username }}</p>:
-							<span class="chat__user-message">{{ message.text }}</span>
+	   						<p class="chat__user-name chat__user-color">{{ message.user.username }}:<span class="chat__user-message">{{ message.text }}</span></p>
 	   					</div>
 					{% endfor %}
 				</div>
