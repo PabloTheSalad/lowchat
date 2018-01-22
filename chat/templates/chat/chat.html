@@ -18,20 +18,30 @@
 			<a href="/logout" class="user-goodbye">
 				<button class="user-goodbye__button">Go out</button>
 			</a>
-			<div class="chat">
-				<div class="chat__main-frame">
-					{% for message in messages %}
-	   					<div class="chat__user-text">
-	   						<p class="chat__user-name" style="color:{{ message.user.features.namecolor }}">{{ message.user.username }}:<span class="chat__user-message">{{ message.text }}</span></p>
-	   					</div>
-					{% endfor %}
+			<div class="chat-frames-i">
+				<div class="chat">
+					<div class="chat__main-frame">
+						{% for message in messages %}
+	   						<div class="chat__user-text">
+	   							<p class="chat__user-name" style="color:{{ message.user.features.namecolor }}">{{ message.user.username }}:<span class="chat__user-message">{{ message.text }}</span></p>
+	   						</div>
+						{% endfor %}
+					</div>
+               		<form class="chat__i" action="{% url 'chat:send' %}" method="post">
+						{% csrf_token %}
+						<input type="text" name="text" class="chat__input" maxlength="1024" required id="id_text">
+                    	<button class="chat__button" type="submit" value="send">go</button>
+					</form> 
 				</div>
-                <form class="chat__i" action="{% url 'chat:send' %}" method="post">
-					{% csrf_token %}
-					<input type="text" name="text" class="chat__input" maxlength="1024" required id="id_text">
-                    <button class="chat__button" type="submit" value="send">go</button>
-				</form> 
+				<div class="users-list">
+					<div class="users-list__i">
+						<div class="users-list__avatar">
+						</div>
+						<span class="users-list__name chat__user-name">Lala</span>
+					</div>
+				</div>
 			</div>
+		</div>
 	</div>
 </body>
 </html>
