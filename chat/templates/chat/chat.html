@@ -37,7 +37,9 @@
 					<div class="users-list__i">
 						<div class="users-list__avatar">
 						</div>
-						<span class="users-list__name chat__user-name">Lala</span>
+						{% for userr in users %}
+							<span class="users-list__name chat__user-name">{{ userr.username }}</span>
+						{% endfor %}
 					</div>
 				</div>
 			</div>
