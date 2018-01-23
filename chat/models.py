@@ -27,6 +27,9 @@ class Message(models.Model):
     class Meta:
         ordering = ('pub_date',)
 
+    def gettime(self):
+        return str(self.pub_date.time().hour) + ':' + str(self.pub_date.time().second)
+
 
 class Features(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
