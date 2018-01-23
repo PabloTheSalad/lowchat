@@ -12,6 +12,8 @@ from .models import Message, Features
 
 from .forms import LoginForm, RegistrateForm, MessageForm
 
+from django.utils import timezone
+
 
 @login_required(login_url='/login')
 def profile(request):
@@ -44,8 +46,11 @@ def lout(request):
 def chat(request):
     user = request.user
     messages = Message.objects.all()[:100]
+    request.user.features.last_enter = timezone.now()
+    request.user.features.save()
+    users_online = User.objects.filter(features__last_enter__gt=timezone.now()-timezone.timedelta(seconds=300))
     return render(request, 'chat/chat.html',
-                  {'user': user, 'messages': messages})
+                  {'user': user, 'users': users_online, 'messages': messages})
 
 
 @login_required(login_url='/login')

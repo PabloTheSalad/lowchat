@@ -34,3 +34,7 @@ class Features(models.Model):
     gender = models.CharField(max_length=1)
     information = models.CharField(max_length=1024)
     namecolor = models.CharField(max_length=32, default='black')
+    last_enter = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return (self.user.username + ' features')
