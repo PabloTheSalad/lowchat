@@ -34,13 +34,14 @@
 					</form> 
 				</div>
 				<div class="users-list">
+					{% for userr in users %}
 					<div class="users-list__i">
 						<div class="users-list__avatar">
 						</div>
-						{% for userr in users %}
-							<span class="users-list__name chat__user-name">{{ userr.username }}</span>
-						{% endfor %}
+                        <span class="users-list__name chat__user-name" style="color:{{ user.features.namecolor }}">{{ userr.username }}
+                        </span>
 					</div>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
