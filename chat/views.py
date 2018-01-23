@@ -84,7 +84,8 @@ def registrate(request):
                 age=data['age'],
                 gender=data['gender'],
                 information=data['information'],
-                namecolor=data['namecolor']
+                namecolor=data['namecolor'],
+                image=data['image']
             ).save()
             url = '/login'
         else:

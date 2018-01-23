@@ -17,6 +17,7 @@ class RegistrateForm(forms.Form):
     username = forms.CharField(min_length=4, max_length=64)
     email = forms.EmailField()
     password = forms.CharField(min_length=8, max_length=128, widget=forms.PasswordInput)
+    image = forms.ImageField()
     age = forms.IntegerField()
     gender = forms.ChoiceField(choices=GENDERS)
     namecolor = forms.ChoiceField(choices=COLORS)
