@@ -44,4 +44,4 @@ class Features(models.Model):
         return (self.user.username + ' features')
 
     def getimg(self):
-        return '/static/' + '/'.join(self.image.url.split('/')[1:])
+        return '/' + '/'.join(self.image.url.split('/')[1:])

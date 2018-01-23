@@ -37,7 +37,7 @@
 				<div class="users-list">
 					{% for userr in users %}
 					<div class="users-list__i">
-						<img class="users-list__avatar" src="{{ users.getimage }}" alt="img">
+						<img class="users-list__avatar" src="{{ userr.features.getimg }}" alt="img">
                         <span class="users-list__name chat__user-name" style="color:{{ userr.features.namecolor }}">{{ userr.username }}
                         </span>
 					</div>
