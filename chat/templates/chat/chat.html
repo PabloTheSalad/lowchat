@@ -29,7 +29,7 @@
 					</div>
                		<form class="chat__i" action="{% url 'chat:send' %}" method="post">
 						{% csrf_token %}
-						<input type="text" name="text" class="chat__input" maxlength="1024" required id="id_text">
+						<textarea type="text" name="text" class="chat__area" maxlength="1024" required id="id_text" autofocus rows="2"></textarea>
                     	<button class="chat__button" type="submit" value="send">go</button>
 					</form> 
 				</div>
