@@ -55,6 +55,7 @@ body {
   height: 100%;
   background: #d7eec7;
   border: 3px solid #375F1B;
+  word-wrap: break-word;
 }
 .chat__user-text {
   margin: 1%;
