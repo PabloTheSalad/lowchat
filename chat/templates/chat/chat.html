@@ -20,7 +20,7 @@
 			</a>
 			<div class="chat-frames-i">
 				<div class="chat">
-					<div class="chat__main-frame">
+					<div id="frameScroll" class="chat__main-frame">
 						{% for message in messages %}
 	   						<div class="chat__user-text">
 	   							<p class="chat__time">{{ message.gettime }}</p>
@@ -46,5 +46,6 @@
 			</div>
 		</div>
 	</div>
+	<script  type="module" src="{% static 'chat/js/scripts.js' %}"></script>
 </body>
 </html>
