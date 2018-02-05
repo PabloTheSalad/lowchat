@@ -33,8 +33,8 @@
 				</div>
 				<div class="column2">
 					<p for="id_image" class="image phrase">Image:</p>
-					<img class="avatar" src="img/qwe.jpg" alt="img"><br>
-					<button type="file" name="image" required id="id_image" class="image__input input">Choose file</button>
+					<img class="avatar" src="{{ userr.features.getimg }}" alt="img"><br>
+					<input type="file" name="image" required id="id_image" class="image__input input">
 					<p for="id_information" class="information phrase">About yourself:</p>
 					<textarea type="text" name="information" maxlength="1024" required="" id="id_information" class="information__input input"></textarea>
 				</div>
