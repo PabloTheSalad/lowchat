@@ -45,8 +45,8 @@ class Message(models.Model):
 
 class Features(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    image = models.ImageField(upload_to='staticfiles/chat/p_images/', max_length=100)
-    age = models.IntegerField()
+    image = models.ImageField(upload_to='staticfiles/chat/p_images/', max_length=100, default='chat/static/chat/p_images/default.jpg')
+    age = models.DateField()
     gender = models.CharField(max_length=1)
     information = models.CharField(max_length=1024)
     namecolor = models.CharField(max_length=32, default='black')

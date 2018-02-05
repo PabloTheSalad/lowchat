@@ -72,7 +72,11 @@ def registrate(request):
     if request.method == 'POST':
         form = RegistrateForm(request.POST)
         data = form.data
+        for d in data:
+            print(d + ':' + data[d])
         user_exist = User.objects.filter(username=data['username']).count()
+        # print(form.is_valid())
+        # if not form.is_valid(): print(form.errors)
         if form.is_valid():
             if user_exist:
                 return render(request, 'chat/registrate.html',
@@ -88,7 +92,7 @@ def registrate(request):
                 gender=data['gender'],
                 information=data['information'],
                 namecolor=data['namecolor'],
-                image=data['image']
+                #image=data['image']
             ).save()
             url = '/login'
         else:
