@@ -28,7 +28,19 @@ class Message(models.Model):
         ordering = ('pub_date',)
 
     def gettime(self):
-        return str(self.pub_date.time().hour) + ':' + str(self.pub_date.time().second)
+        time = self.pub_date.time()
+        hour = time.hour
+        minute = time.minute
+        if hour < 10:
+            hour = '0' + str(hour)
+        else:
+            hour = str(hour)
+        if minute < 10:
+            minute = '0' + str(minute)
+        else:
+            minute = str(minute)
+
+        return hour + ':' + minute
 
 
 class Features(models.Model):
@@ -44,4 +56,4 @@ class Features(models.Model):
         return (self.user.username + ' features')
 
     def getimg(self):
-        return '/' + '/'.join(self.image.url.split('/')[1:])
+        return '/static/' + '/'.join(self.image.url.split('/')[1:])

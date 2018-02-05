@@ -45,7 +45,10 @@ def lout(request):
 @login_required(login_url='/login')
 def chat(request):
     user = request.user
-    messages = Message.objects.all()[:100]
+    fm = Message.objects.last().id - 100
+    if fm < 0:
+        fm = 0
+    messages = Message.objects.all()[fm:]
     request.user.features.last_enter = timezone.now()
     request.user.features.save()
     users_online = User.objects.filter(features__last_enter__gt=timezone.now()-timezone.timedelta(seconds=300))

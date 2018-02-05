@@ -1,8 +1,60 @@
-{% if error %}
-    <p style="color:red">{{ error }}</p>
-{% endif %}
-<form action="{% url 'chat:registrate' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="registrate">
-</form>
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Lowchat</title>
+	<link rel="stylesheet" href="{% static 'chat/css/registrate.css' %}">
+	<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body id="doc">
+	<div class="container-wrapper">
+		<div class="container">
+			<div class="title-i">
+			<h1 class="title">Registration form</h1>
+			</div>
+			<form class="container__i" action="/registrate/" method="post">
+                {% csrf_token %}
+				<div class="column1">
+					<p for="id_username" class="username phrase">Username:</p>
+					<input type="text" name="username" maxlength="64" minlength="4" required id="id_username" class="username__input input">
+					<p for="id_password" class="password phrase">Password:</p>
+					<input type="password" name="password" maxlength="128" minlength="8" required="" id="id_password" class="password__input input">
+					<p for="id_email" class="email phrase">Email:</p>
+					<input type="email" name="email" required id="id_email" class="email__input input">
+					<p for="id_age" class="age phrase">Age:</p>
+					<input type="date" name="age" required id="id_age" class="age__input input" >
+				</div>
+				<div class="column2">
+					<p for="id_image" class="image phrase">Image:</p>
+					<img class="avatar" src="img/qwe.jpg" alt="img"><br>
+					<button type="file" name="image" required id="id_image" class="image__input input">Choose file</button>
+					<p for="id_information" class="information phrase">About yourself:</p>
+					<textarea type="text" name="information" maxlength="1024" required="" id="id_information" class="information__input input"></textarea>
+				</div>
+				<div class="column3">
+					<p for="id_gender" class="gender phrase">Gender:</p>
+					<select name="gender" id="id_gender" class="gender__select" >
+						<option value="M" class="gender__option1">Male</option>
+						<option value="F" class="gender__option2">Female</option>
+					</select> 
+					<p for="id_namecolor" class="namecolor phrase">Namecolor:</p>
+					<select name="gender" id="id_gender" class="namecolor__select" >
+						<option value="black" class="namecolor__option1">Black</option>
+						<option value="violet" class="namecolor__option2">Violet</option>
+					</select> <br>
+					<button type="submit" value="registrate" class="registrate">Registrate</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script  type="module" src="js/scripts.js"></script>
+</body>
+</html>
+
