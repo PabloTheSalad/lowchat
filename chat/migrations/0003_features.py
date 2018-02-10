@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             name='Features',
             fields=[
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
-                ('age', models.IntegerField()),
+                ('age', models.DateField()),
                 ('gender', models.CharField(max_length=1)),
                 ('information', models.CharField(max_length=1024)),
                 ('namecolor', models.CharField(default='black', max_length=32)),

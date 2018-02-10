@@ -70,13 +70,14 @@ def registrate(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('/chat')
     if request.method == 'POST':
-        form = RegistrateForm(request.POST)
+        form = RegistrateForm(request.POST, request.FILES)
         data = form.data
         for d in data:
             print(d + ':' + data[d])
         user_exist = User.objects.filter(username=data['username']).count()
-        # print(form.is_valid())
-        # if not form.is_valid(): print(form.errors)
+        print(form.is_valid())
+        print(form.errors)
+        print(form.files)
         if form.is_valid():
             if user_exist:
                 return render(request, 'chat/registrate.html',
@@ -92,7 +93,7 @@ def registrate(request):
                 gender=data['gender'],
                 information=data['information'],
                 namecolor=data['namecolor'],
-                #image=data['image']
+                image=form.files['image']
             ).save()
             url = '/login'
         else:

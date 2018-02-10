@@ -19,7 +19,7 @@
 			<div class="title-i">
 			<h1 class="title">Registration form</h1>
 			</div>
-			<form class="container__i" action="/registrate/" method="post">
+			<form enctype="multipart/form-data" class="container__i" action="/registrate/" method="post">
                 {% csrf_token %}
 				<div class="column1">
 					<p for="id_username" class="username phrase">Username:</p>
