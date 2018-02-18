@@ -9,7 +9,6 @@
 	<title>Lowchat</title>
     <link rel="stylesheet" href="{% static 'chat/css/chat.css' %}">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body id="doc">
 	<div class="container-wrapper">
@@ -32,7 +31,7 @@
 						{% csrf_token %}
 						<textarea type="text" name="text" class="chat__area" maxlength="1024" required id="id_text" autofocus rows="2"></textarea>
                     	<button class="chat__button" type="submit" value="send">go</button>
-					</form> 
+					</form>
 				</div>
 				<div class="users-list">
 					{% for userr in users %}
@@ -47,5 +46,7 @@
 		</div>
 	</div>
 	<script  type="module" src="{% static 'chat/js/scripts.js' %}"></script>
+	<script type="text/javascript"> const scrollDown = document.getElementById("frameScroll");
+scrollDown.scrollTop = scrollDown.scrollHeight;</script>
 </body>
 </html>
