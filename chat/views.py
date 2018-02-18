@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 
 # from django.urls import reverse
 
@@ -22,6 +22,7 @@ def profile(request, user):
     if (cur_username == user):
         html = 'current_profile.html'
 
+    user = get_object_or_404(User, username=user)
     return render(request, 'chat/'+html, {'user': user})
 
 
@@ -49,10 +50,13 @@ def lout(request):
 @login_required(login_url='/login')
 def chat(request):
     user = request.user
-    fm = Message.objects.last().id - 100
-    if fm < 0:
-        fm = 0
-    messages = Message.objects.all()[fm:]
+    # Опасность при нуле сообщений!
+    lm_id = Message.objects.last().id
+    user.features.lr_message = lm_id
+    lm = lm_id - 100
+    if lm < 0:
+        lm = 0
+    messages = Message.objects.filter(id__gt=lm)
     request.user.features.last_enter = timezone.now()
     request.user.features.save()
     users_online = User.objects.filter(
@@ -63,11 +67,50 @@ def chat(request):
 
 
 @login_required(login_url='/login')
+def json_message(request, number):
+    lm_id = Message.objects.last().id
+    messages = Message.objects.filter(id__gt=lm_id-number)
+    json = {}
+    for message in messages:
+        json[message.id] = {'username': message.user.username,
+                            'time': message.gettime(), 'text': message.text}
+
+    return JsonResponse(json, safe=False)
+
+
+@login_required(login_url='/login')
+def lm_json(request):
+    user = request.user
+    messages = Message.objects.filter(id__gt=user.features.lr_message)
+    json = {}
+    for message in messages:
+        json[message.id] = {'username': message.user.username,
+                            'time': message.gettime(),
+                            'text': message.text
+                            }
+
+    return JsonResponse(json, safe=False)
+
+
+@login_required(login_url='/login')
 def sendMessage(request):
     form = MessageForm(request.POST)
     if form.is_valid():           # Здесь раньше была проверка на длинну текста
         Message(user=request.user, text=form.data['text']).save()
     return HttpResponseRedirect('/chat')
+
+
+def change_theme(request):
+    if request.user.is_authenticated:
+        user = request.user
+        if user.features.theme == 0:
+            request.user.features.theme = 1
+        else:
+            request.user.features.theme = 0
+        request.user.features.save()
+        return JsonResponse({'status': 'ok'}, safe=False)
+    else:
+        return JsonResponse({'status': 'not authenticated'}, safe=False)
 
 
 def registrate(request):

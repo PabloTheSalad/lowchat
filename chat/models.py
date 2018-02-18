@@ -42,6 +42,7 @@ class Message(models.Model):
 
         return hour + ':' + minute
 
+
 class Features(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     image = models.ImageField(upload_to='staticfiles/chat/p_images/', max_length=100, default='static/chat/p_images/default.jpg')
@@ -50,6 +51,8 @@ class Features(models.Model):
     information = models.CharField(max_length=1024)
     namecolor = models.CharField(max_length=32, default='black')
     last_enter = models.DateTimeField(auto_now=True)
+    lr_message = models.IntegerField(default=0)
+    theme = models.IntegerField(default=0)
 
     def __str__(self):
         return (self.user.username + ' features')
