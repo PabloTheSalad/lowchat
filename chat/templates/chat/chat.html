@@ -27,10 +27,10 @@
 	   						</div>
 						{% endfor %}
 					</div>
-               		<form class="chat__i" action="{% url 'chat:send' %}" method="post">
+               		<form class="chat__i" id="goMessage" action="{% url 'chat:send' %}" method="post">
 						{% csrf_token %}
 						<textarea type="text" name="text" class="chat__area" maxlength="1024" required id="id_text" autofocus rows="2"></textarea>
-                    	<button class="chat__button" type="submit" value="send">go</button>
+            <button id="buttonGo" class="chat__button" type="submit" value="send">go</button>
 					</form>
 				</div>
 				<div class="users-list">
