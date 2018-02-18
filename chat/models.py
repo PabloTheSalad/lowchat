@@ -42,7 +42,6 @@ class Message(models.Model):
 
         return hour + ':' + minute
 
-
 class Features(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     image = models.ImageField(upload_to='staticfiles/chat/p_images/', max_length=100, default='static/chat/p_images/default.jpg')

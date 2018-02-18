@@ -16,9 +16,13 @@ from django.utils import timezone
 
 
 @login_required(login_url='/login')
-def profile(request):
-    user = request.user
-    return render(request, 'chat/profile.html', {'user': user})
+def profile(request, user):
+    html = 'profile.html'
+    cur_username = request.user.username
+    if (cur_username == user):
+        html = 'current_profile.html'
+
+    return render(request, 'chat/'+html, {'user': user})
 
 
 def lin(request):
@@ -51,7 +55,9 @@ def chat(request):
     messages = Message.objects.all()[fm:]
     request.user.features.last_enter = timezone.now()
     request.user.features.save()
-    users_online = User.objects.filter(features__last_enter__gt=timezone.now()-timezone.timedelta(seconds=300))
+    users_online = User.objects.filter(
+        features__last_enter__gt=timezone.now()-timezone.timedelta(seconds=300)
+    )
     return render(request, 'chat/chat.html',
                   {'user': user, 'users': users_online, 'messages': messages})
 
@@ -59,10 +65,8 @@ def chat(request):
 @login_required(login_url='/login')
 def sendMessage(request):
     form = MessageForm(request.POST)
-    if form.is_valid():
-        text = form.data['text']
-        if text:
-            Message(user=request.user, text=text).save()
+    if form.is_valid():           # Здесь раньше была проверка на длинну текста
+        Message(user=request.user, text=form.data['text']).save()
     return HttpResponseRedirect('/chat')
 
 
@@ -72,16 +76,16 @@ def registrate(request):
     if request.method == 'POST':
         form = RegistrateForm(request.POST, request.FILES)
         data = form.data
-        for d in data:
-            print(d + ':' + data[d])
+        # for d in data:
+        #    print(d + ':' + data[d])
+        # print(form.is_valid())
+        # print(form.errors)
+        # print(form.files)
         user_exist = User.objects.filter(username=data['username']).count()
-        print(form.is_valid())
-        print(form.errors)
-        print(form.files)
         if form.is_valid():
             if user_exist:
                 return render(request, 'chat/registrate.html',
-                              {'error': 'This user is exist', 'form': form})
+                              {'error': 'This user is exist'})
             user = User.objects.create_user(
                 data['username'],
                 data['email'],
@@ -100,10 +104,10 @@ def registrate(request):
             url = '/registrate'
         return HttpResponseRedirect(url)
     else:
-        form = RegistrateForm()
-        return render(request, 'chat/registrate.html', {'form': form})
+        return render(request, 'chat/registrate.html')
 
 
 @login_required(login_url='/login')
 def otherwise(request, url='str'):
     return HttpResponseRedirect('/chat')
+

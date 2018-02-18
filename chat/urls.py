@@ -5,7 +5,7 @@ from . import views
 app_name = 'chat'
 
 urlpatterns = [
-    path('profile/', views.profile, name='profile'),
+    path('profile/<str:user>', views.profile, name='profile'),
     path('registrate/', views.registrate, name='registrate'),
     path('login/', views.lin, name='login'),
     path('logout/', views.lout, name='logout'),

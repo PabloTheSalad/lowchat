@@ -8,6 +8,7 @@ class LoginForm(forms.Form):
 
 class RegistrateForm(forms.Form):
     GENDERS = (
+        ('N', 'None'),
         ('M', 'Male'),
         ('F', 'Female'),
     )
@@ -17,10 +18,10 @@ class RegistrateForm(forms.Form):
     username = forms.CharField(min_length=4, max_length=64)
     email = forms.EmailField()
     password = forms.CharField(min_length=8, max_length=128)
-    #image = forms.ImageField()
+    image = forms.ImageField()
     age = forms.DateField(input_formats=['%Y-%m-%d'])
     gender = forms.ChoiceField(choices=GENDERS)
-    namecolor = forms.ChoiceField(choices=COLORS)
+    namecolor = forms.CharField(max_length=7)
     information = forms.CharField(max_length=1024)
 
 
