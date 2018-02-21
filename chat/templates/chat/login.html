@@ -15,16 +15,16 @@
 	<div class="authorization-frame">
         <form class="avtorization" action="{% url 'chat:login' %}" method="post">
 			{% csrf_token %}
-			<p class="login">Логин: <br>
+			<p class="login">Login: <br>
 				<input autofocus class="login__input" maxlength="25" type="text" name="username">
 			</p>
-			<p class="password">Пароль: <br>
+			<p class="password">Password: <br>
 	    		<input class="password__input" type="password" maxlength="25" name="password">
 	    	</p>
 		<input type="submit" class="start-button" value="Start"> 
 		</form>
-		<p class="Registration">Вы не местный? <br>
-			<a href="/registrate" class="Registration__link">Sign up</a>
+		<p class="Registration">Are you a stranger? <br>
+			<a href="/registrate" class="Registration__link">REGISTRATION</a>
 		</p>
 	</div>
 </body>
