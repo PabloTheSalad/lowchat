@@ -29,14 +29,14 @@
 					<p for="id_email" class="email phrase">Email:</p>
 					<input type="email" name="email" required id="id_email" class="email__input input">
 					<p for="id_age" class="age phrase">Age:</p>
-					<input type="date" name="age" required id="id_age" class="age__input input" >
+					<input type="date" name="age" id="id_age" class="age__input input" >
 				</div>
 				<div class="column2">
 					<p for="id_image" class="image phrase">Image:</p>
 					<img class="avatar" src="{{ userr.features.getimg }}" alt="img"><br>
-					<input type="file" name="image" required id="id_image" class="image__input input">
+					<input type="file" name="image" id="id_image" class="image__input input">
 					<p for="id_information" class="information phrase">About yourself:</p>
-					<textarea type="text" name="information" maxlength="1024" required="" id="id_information" class="information__input input"></textarea>
+					<textarea type="text" name="information" maxlength="1024" id="id_information" class="information__input input"></textarea>
 				</div>
 				<div class="column3">
 					<p for="id_gender" class="gender phrase">Gender:</p>

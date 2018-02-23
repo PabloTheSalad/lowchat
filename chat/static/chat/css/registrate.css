@@ -82,6 +82,9 @@ body {
 .image__input {
   background: #66AF31;
 }
+.information__input {
+  resize:none;
+}
 option {
   background: #9BD720;
 }
