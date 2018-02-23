@@ -23,29 +23,29 @@
                 {% csrf_token %}
 				<div class="column1">
 					<p for="id_username" class="username phrase">Username:</p>
-					<input type="text" name="username" maxlength="64" minlength="4" required id="id_username" class="username__input input">
+					<input type="text" name="username" maxlength="64" minlength="4" required id="id_username" class="username__input indentation">
 					<p for="id_password" class="password phrase">Password:</p>
-					<input type="password" name="password" maxlength="128" minlength="8" required="" id="id_password" class="password__input input">
+					<input type="password" name="password" maxlength="128" minlength="8" required="" id="id_password" class="password__input indentation">
 					<p for="id_email" class="email phrase">Email:</p>
-					<input type="email" name="email" required id="id_email" class="email__input input">
+					<input type="email" name="email" required id="id_email" class="email__input indentation">
 					<p for="id_age" class="age phrase">Age:</p>
-					<input type="date" name="age" id="id_age" class="age__input input" >
+					<input type="date" name="age" id="id_age" class="age__input indentation" >
 				</div>
 				<div class="column2">
 					<p for="id_image" class="image phrase">Image:</p>
-					<img class="avatar" src="{{ userr.features.getimg }}" alt="img"><br>
-					<input type="file" name="image" id="id_image" class="image__input input">
+					<img class="avatar" src="/static/chat/p_images/default.jpg" alt="img"><br>
+					<input type="file" name="image" id="id_image" class="image__input indentation">
 					<p for="id_information" class="information phrase">About yourself:</p>
-					<textarea type="text" name="information" maxlength="1024" id="id_information" class="information__input input"></textarea>
+					<textarea type="text" name="information" maxlength="1024" id="id_information" class="information__input indentation"></textarea>
 				</div>
 				<div class="column3">
 					<p for="id_gender" class="gender phrase">Gender:</p>
-					<select name="gender" id="id_gender" class="gender__select input" >
+					<select name="gender" id="id_gender" class="gender__select indentation" >
 						<option value="M" class="gender__option1">Male</option>
 						<option value="F" class="gender__option2">Female</option>
 					</select> 
 					<p for="id_namecolor" class="namecolor phrase">Namecolor:</p>
-					<input type="color" value="black" name="namecolor" id="id_color input" class="namecolor__select" >
+					<input type="color" value="black" name="namecolor" id="id_color" class="namecolor__select indentation" >
 					</input> <br>
 					<button type="submit" value="registrate" class="registrate">Sign up</button>
 				</div>
